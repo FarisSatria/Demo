@@ -12,17 +12,17 @@ public class SiswaController {
     private final SiswaService studentService;
 
     @Autowired
-    public SiswaController(SiswaService studentService){
+    public SiswaController(SiswaService studentService) {
         this.studentService = studentService;
     }
 
     @GetMapping
-    public List<SiswaEntity> getStudents(){
+    public List<SiswaEntity> getStudents() {
         return studentService.getStudents();
     }
 
     @PostMapping
-    public void registerNewStudent(@RequestBody SiswaEntity student){
+    public void registerNewStudent(@RequestBody SiswaEntity student) {
         studentService.addNewStudent(student);
     }
 }
