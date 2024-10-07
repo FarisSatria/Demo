@@ -3,8 +3,6 @@ package com.example.demo.student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
 @RestController
@@ -19,12 +17,12 @@ public class StudentController {
     }
 
     @GetMapping
-    public List<Student> getStudents(){
+    public List<StudentEntity> getStudents(){
         return studentService.getStudents();
     }
 
     @PostMapping
-    public void registerNewStudent(@RequestBody Student student){
+    public void registerNewStudent(@RequestBody StudentEntity student){
         studentService.addNewStudent(student);
     }
 }

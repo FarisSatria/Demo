@@ -2,12 +2,9 @@ package com.example.demo.student;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-import java.time.Period;
-
 @Entity
-@Table
-public class Student {
+@Table(name = "student")
+public class StudentEntity {
     @Id
     @SequenceGenerator(
             name = "student_sequence",
@@ -18,51 +15,42 @@ public class Student {
             strategy = GenerationType.SEQUENCE,
             generator = "student_sequence"
     )
-    private Long id;
+    private Integer nisn;
     private String name;
-    private String email;
-    private LocalDate dob;
-    @Transient
-    private Integer Age;
+    private String alamat;
+    private String kelas;
 
-    public Student() {
+    public StudentEntity() {
     }
 
-    public Student(Long id, String name, String email, LocalDate dob) {
-        this.id = id;
+    public StudentEntity(Integer nisn, String name, String alamat,String kelas) {
+        this.nisn = nisn;
         this.name = name;
-        this.email = email;
-        this.dob = dob;
+        this.alamat = alamat;
+        this.kelas = kelas;
     }
 
-    public Student(String name, String email, LocalDate dob) {
+    public StudentEntity(String name, String alamat, String kelas) {
         this.name = name;
-        this.email = email;
-        this.dob = dob;
+        this.alamat = alamat;
+        this.kelas = kelas;
     }
 
-    public Integer getAge() {
-        return Period.between(this.dob, LocalDate.now()).getYears();
+
+    public String getKelas() {
+        return kelas;
     }
 
-    public void setAge(Integer age) {
-        Age = age;
+    public void setKelas(String kelas) {
+        this.kelas = kelas;
     }
 
-    public LocalDate getDob() {
-        return dob;
+    public String getAlamat() {
+        return alamat;
     }
 
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
     }
 
     public String getName() {
@@ -73,22 +61,21 @@ public class Student {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
+    public Integer getNisn() {
+        return nisn;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setNisn(Integer nisn) {
+        this.nisn = nisn;
     }
 
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
+                "nisn=" + nisn +
                 ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", dob=" + dob +
-                ", Age=" + Age +
+                ", alamat='" + alamat + '\'' +
+                ", kelas=" + kelas +
                 '}';
     }
 }

@@ -16,20 +16,15 @@ public class StudentConfig {
     CommandLineRunner commandLineRunner(
             StudentRepository repository){
         return args -> {
-            Student faris = new Student(
+            StudentEntity faris = new StudentEntity(
+                    391120221,
                     "Faris",
-                    "satria.faris@gmail.com",
-                    LocalDate.of(2007, FEBRUARY, 4)
-            );
-
-            Student aleks = new Student(
-                    "Aleks",
-                    "Elaks@gmail.com",
-                    LocalDate.of(1994, FEBRUARY, 4)
+                    "JL.Asem Barat No.46 RT.03 RW.04",
+                    "XII RPL 1"
             );
 
             repository.saveAll(
-                    List.of(faris, aleks)
+                    List.of(faris)
             );
         };
     }
