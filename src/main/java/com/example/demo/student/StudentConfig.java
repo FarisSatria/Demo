@@ -17,7 +17,7 @@ public class StudentConfig {
             StudentRepository repository){
         return args -> {
             StudentEntity faris = new StudentEntity(
-                    391120221,
+                    1212,
                     "Faris",
                     "JL.Asem Barat No.46 RT.03 RW.04",
                     "XII RPL 1"

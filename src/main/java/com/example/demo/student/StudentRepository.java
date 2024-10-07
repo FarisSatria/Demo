@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface StudentRepository
         extends JpaRepository<StudentEntity, Long> {
 
-    @Query("SELECT s FROM Student s WHERE s.nisn =?1")
+    @Query("SELECT s FROM StudentEntity s WHERE s.nisn = ?1")
     Optional<StudentEntity> findStudentByNisn(Integer nisn);
 }
+

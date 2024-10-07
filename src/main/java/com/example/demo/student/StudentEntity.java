@@ -3,7 +3,7 @@ package com.example.demo.student;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "student")
+@Table(name = "StudentEntity")
 public class StudentEntity {
     @Id
     @SequenceGenerator(
