@@ -7,22 +7,22 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/student")
-public class StudentController {
+public class SiswaController {
 
-    private final StudentService studentService;
+    private final SiswaService studentService;
 
     @Autowired
-    public StudentController(StudentService studentService){
+    public SiswaController(SiswaService studentService){
         this.studentService = studentService;
     }
 
     @GetMapping
-    public List<StudentEntity> getStudents(){
+    public List<SiswaEntity> getStudents(){
         return studentService.getStudents();
     }
 
     @PostMapping
-    public void registerNewStudent(@RequestBody StudentEntity student){
+    public void registerNewStudent(@RequestBody SiswaEntity student){
         studentService.addNewStudent(student);
     }
 }

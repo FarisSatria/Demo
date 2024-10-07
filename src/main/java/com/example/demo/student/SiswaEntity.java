@@ -3,8 +3,8 @@ package com.example.demo.student;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "StudentEntity")
-public class StudentEntity {
+@Table(name = "Siswa")
+public class SiswaEntity {
     @Id
     @SequenceGenerator(
             name = "student_sequence",
@@ -15,27 +15,35 @@ public class StudentEntity {
             strategy = GenerationType.SEQUENCE,
             generator = "student_sequence"
     )
+    private Long id;
     private Integer nisn;
-    private String name;
+    private String nama;
     private String alamat;
     private String kelas;
 
-    public StudentEntity() {
+    public SiswaEntity() {
     }
 
-    public StudentEntity(Integer nisn, String name, String alamat,String kelas) {
+    public SiswaEntity(Integer nisn, String nama, String alamat, String kelas) {
         this.nisn = nisn;
-        this.name = name;
+        this.nama = nama;
         this.alamat = alamat;
         this.kelas = kelas;
     }
 
-    public StudentEntity(String name, String alamat, String kelas) {
-        this.name = name;
+    public SiswaEntity(String nama, String alamat, String kelas) {
+        this.nama = nama;
         this.alamat = alamat;
         this.kelas = kelas;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getKelas() {
         return kelas;
@@ -53,12 +61,12 @@ public class StudentEntity {
         this.alamat = alamat;
     }
 
-    public String getName() {
-        return name;
+    public String getNama() {
+        return nama;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
     public Integer getNisn() {
@@ -72,8 +80,9 @@ public class StudentEntity {
     @Override
     public String toString() {
         return "Student{" +
+                "id=" + id +
                 "nisn=" + nisn +
-                ", name='" + name + '\'' +
+                ", nama='" + nama + '\'' +
                 ", alamat='" + alamat + '\'' +
                 ", kelas=" + kelas +
                 '}';

@@ -7,21 +7,21 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class StudentService {
+public class SiswaService {
 
-    private final StudentRepository studentRepository;
+    private final SiswaRepository studentRepository;
 
     @Autowired
-    public StudentService(StudentRepository studentRepository) {
+    public SiswaService(SiswaRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
 
-    public List<StudentEntity> getStudents(){
+    public List<SiswaEntity> getStudents(){
         return studentRepository.findAll();
     }
 
-    public void addNewStudent(StudentEntity student) {
-        Optional<StudentEntity> studentOptional = studentRepository
+    public void addNewStudent(SiswaEntity student) {
+        Optional<SiswaEntity> studentOptional = studentRepository
                 .findStudentByNisn(student.getNisn());
         if (studentOptional.isPresent()){
             throw new IllegalStateException("Nisn taken");
