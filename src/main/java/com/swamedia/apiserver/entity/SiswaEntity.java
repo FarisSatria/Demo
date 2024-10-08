@@ -1,4 +1,4 @@
-package com.example.demo.student;
+package com.swamedia.apiserver.entity;
 
 import jakarta.persistence.*;
 

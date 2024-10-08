@@ -1,5 +1,7 @@
-package com.example.demo.student;
+package com.swamedia.apiserver.config;
 
+import com.swamedia.apiserver.entity.SiswaEntity;
+import com.swamedia.apiserver.repository.SiswaRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
