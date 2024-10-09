@@ -12,6 +12,6 @@ public interface SiswaRepository
         extends JpaRepository<SiswaEntity, Long> {
 
     @Query("SELECT s FROM SiswaEntity s WHERE s.nisn = ?1")
-    Optional<SiswaEntity> findStudentByNisn(Integer nisn);
+    Optional<SiswaEntity> findSiswaByNisn(Integer nisn);
 }
 

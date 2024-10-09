@@ -11,32 +11,32 @@ import java.util.Optional;
 @Service
 public class SiswaService {
 
-    private final SiswaRepository studentRepository;
+    private final SiswaRepository siswaRepository;
 
     @Autowired
-    public SiswaService(SiswaRepository studentRepository) {
-        this.studentRepository = studentRepository;
+    public SiswaService(SiswaRepository siswaRepository) {
+        this.siswaRepository = siswaRepository;
     }
 
     public List<SiswaEntity> getStudents(){
-        return studentRepository.findAll();
-    }
-
-    public void addNewStudent(SiswaEntity student) {
-        Optional<SiswaEntity> studentOptional = studentRepository
-                .findStudentByNisn(student.getNisn());
-        if (studentOptional.isPresent()){
-            throw new IllegalStateException("Nisn taken");
-        }
-        studentRepository.save(student);
+        return siswaRepository.findAll();
     }
 
     public Optional<SiswaEntity> getStudentById(Long id) {
-        return studentRepository.findById(id);
+        return siswaRepository.findById(id);
+    }
+
+    public void addNewStudent(SiswaEntity student) {
+        Optional<SiswaEntity> studentOptional = siswaRepository
+                .findSiswaByNisn(student.getNisn());
+        if (studentOptional.isPresent()){
+            throw new IllegalStateException("Nisn taken");
+        }
+        siswaRepository.save(student);
     }
 
     public void updateStudent(Long id, SiswaEntity newSiswaData) {
-        SiswaEntity student = studentRepository.findById(id)
+        SiswaEntity student = siswaRepository.findById(id)
                 .orElseThrow(() -> new IllegalStateException("Siswa dengan ID " + id + " tidak ada"));
 
         if (newSiswaData.getNama() != null && !newSiswaData.getNama().isEmpty()) {
@@ -44,22 +44,30 @@ public class SiswaService {
         }
 
         if (newSiswaData.getNisn() != null && !newSiswaData.getNisn().equals(student.getNisn())) {
-            Optional<SiswaEntity> studentOptional = studentRepository.findStudentByNisn(newSiswaData.getNisn());
+            Optional<SiswaEntity> studentOptional = siswaRepository.findSiswaByNisn(newSiswaData.getNisn());
             if (studentOptional.isPresent()) {
                 throw new IllegalStateException("Nisn taken");
             }
             student.setNisn(newSiswaData.getNisn());
         }
 
-        studentRepository.save(student);
+        if (newSiswaData.getAlamat() != null && !newSiswaData.getAlamat().isEmpty()) {
+            student.setAlamat(newSiswaData.getAlamat());
+        }
+
+        if (newSiswaData.getKelas() != null && !newSiswaData.getKelas().isEmpty()) {
+            student.setKelas(newSiswaData.getKelas());
+        }
+
+        siswaRepository.save(student);
     }
 
     public void deleteStudent(Long id) {
-        boolean exists = studentRepository.existsById(id);
+        boolean exists = siswaRepository.existsById(id);
         if (!exists) {
             throw new IllegalStateException("Siswa dengan ID " + id + " tidak ada");
         }
-        studentRepository.deleteById(id);
+        siswaRepository.deleteById(id);
     }
 
 

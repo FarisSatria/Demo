@@ -28,6 +28,7 @@ public class SiswaController {
         return studentService.getStudentById(id)
                 .orElseThrow(() -> new IllegalStateException("Student with ID " + id + " not found"));
     }
+
     @PostMapping
     public void registerNewStudent(@RequestBody SiswaEntity student) {
         studentService.addNewStudent(student);

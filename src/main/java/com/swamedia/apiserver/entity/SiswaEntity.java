@@ -83,8 +83,8 @@ public class SiswaEntity {
                 "id=" + id +
                 "nisn=" + nisn +
                 ", nama='" + nama + '\'' +
-                ", alamat='" + alamat + '\'' +
-                ", kelas=" + kelas +
+                ", kelas=" + kelas + '\'' +
+                ", alamat='" + alamat +
                 '}';
     }
 }
