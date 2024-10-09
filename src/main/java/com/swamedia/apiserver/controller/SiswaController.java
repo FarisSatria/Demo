@@ -11,36 +11,36 @@ import java.util.List;
 @RequestMapping(path = "api/v1/student")
 public class SiswaController {
 
-    private final SiswaService studentService;
+    private final SiswaService siswaService;
 
     @Autowired
-    public SiswaController(SiswaService studentService) {
-        this.studentService = studentService;
+    public SiswaController(SiswaService siswaService) {
+        this.siswaService = siswaService;
     }
 
     @GetMapping
     public List<SiswaEntity> getStudents() {
-        return studentService.getStudents();
+        return siswaService.getStudents();
     }
 
     @GetMapping("/{id}")
     public SiswaEntity getStudentById(@PathVariable Long id) {
-        return studentService.getStudentById(id)
+        return siswaService.getStudentById(id)
                 .orElseThrow(() -> new IllegalStateException("Student with ID " + id + " not found"));
     }
 
     @PostMapping
     public void registerNewStudent(@RequestBody SiswaEntity student) {
-        studentService.addNewStudent(student);
+        siswaService.addNewStudent(student);
     }
 
     @PutMapping("/{id}")
     public void updateStudent(@PathVariable Long id, @RequestBody SiswaEntity newSiswaData) {
-        studentService.updateStudent(id, newSiswaData);
+        siswaService.updateStudent(id, newSiswaData);
     }
 
     @DeleteMapping("/{id}")
     public void deleteStudent(@PathVariable Long id) {
-        studentService.deleteStudent(id);
+        siswaService.deleteStudent(id);
     }
 }
